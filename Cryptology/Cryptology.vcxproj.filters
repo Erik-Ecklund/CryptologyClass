@@ -21,9 +21,18 @@
     <ClCompile Include="KeyExpansion.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="DESEncrypt.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DESTables.h">
+      <Filter>Header Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="KeyExpansion.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DESEncrypt.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

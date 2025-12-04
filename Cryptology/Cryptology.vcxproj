@@ -127,10 +127,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="DESEncrypt.cpp" />
+    <ClCompile Include="DESTables.h" />
     <ClCompile Include="KeyExpansion.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DESEncrypt.h" />
     <ClInclude Include="KeyExpansion.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

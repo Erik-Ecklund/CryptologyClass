@@ -24,10 +24,7 @@ ullong64 paritybits = 0x0101010101010101ULL;
 int main() {
 	ullong testkey = 0x0123456789ABCDEFULL;
 	ullong subkeys[16];
-	cout << "Hex Keys" << endl;
-	KeyExpansion(subkeys, bitset<64>(testkey), true);
-	cout << "Binary Keys" << endl;
-	KeyExpansion(subkeys, bitset<64>(testkey), false, true);
+	KeyExpansion(subkeys, bitset<64>(testkey), true, true);
 
 	ullong64 secretkey = 1ULL << 20;
 	// if secretkey includes parity bits, increment them.

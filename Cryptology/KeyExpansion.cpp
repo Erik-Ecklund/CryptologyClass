@@ -8,15 +8,21 @@ void KeyExpansion(ullong48 subkeys[16], bitset<64> key, bool printHex, bool prin
 		subkeys[round] = subkey;
 	}
 	// Print subkeys
-	for (int i = 0; i < 16; i++) {
-		if (printHex)
-			cout << "K" << dec << setfill(' ') << setw(2) << left << i + 1 << " = 0x"
-			<< hex << uppercase << setw(12) << right << setfill('0') << subkeys[i] << endl;
+	if (printHex) {
+		cout << "Hex Subkeys: " << endl;
+		for (int i = 0; i < 16; i++) {
+			if (printHex)
+				cout << "K" << dec << setfill(' ') << setw(2) << left << i + 1 << " = 0x"
+				<< hex << uppercase << setw(12) << right << setfill('0') << subkeys[i] << endl;
+		}
 	}
-	for (int i = 0; i < 16; i++) {
-		if (printBin)
-			cout << "K" << dec << setfill(' ') << setw(2) << left << i + 1 << " = "
-			<< bitset<48>(subkeys[i]) << endl;
+	if (printBin) {
+		cout << "Binary Subkeys: " << endl;
+		for (int i = 0; i < 16; i++) {
+			if (printBin)
+				cout << "K" << dec << setfill(' ') << setw(2) << left << i + 1 << " = "
+				<< bitset<48>(subkeys[i]) << endl;
+		}
 	}
 }
 

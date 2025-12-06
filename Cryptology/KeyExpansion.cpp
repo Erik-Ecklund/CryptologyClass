@@ -5,13 +5,18 @@ void KeyExpansion(ullong48 subkeys[16], bitset<64> key, bool printHex, bool prin
 	for (int round = 0; round < 16; round++) {
 		cd = Shift(cd, round);
 		ullong subkey = PermutedChoice2(cd);
-		if (printHex)
-			cout << "K" << dec << setfill(' ') << setw(2) << left << round + 1 << " = 0x"
-			<< hex << uppercase << setw(12) << right << setfill('0') << subkey << endl;
-		if (printBin)
-			cout << "K" << dec << setfill(' ') << setw(2) << left << round + 1 << " = "
-			<< bitset<48>(subkey) << endl;
 		subkeys[round] = subkey;
+	}
+	// Print subkeys
+	for (int i = 0; i < 16; i++) {
+		if (printHex)
+			cout << "K" << dec << setfill(' ') << setw(2) << left << i + 1 << " = 0x"
+			<< hex << uppercase << setw(12) << right << setfill('0') << subkeys[i] << endl;
+	}
+	for (int i = 0; i < 16; i++) {
+		if (printBin)
+			cout << "K" << dec << setfill(' ') << setw(2) << left << i + 1 << " = "
+			<< bitset<48>(subkeys[i]) << endl;
 	}
 }
 

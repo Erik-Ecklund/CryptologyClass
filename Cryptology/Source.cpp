@@ -37,7 +37,6 @@ int main() {
 	while (true) {
 		// skip keys with parity bits set to reduce search space
 		while(foundkey & paritybits) foundkey += foundkey & paritybits;
-		if (foundkey == secretkey) cout << "This should be it." << endl;
 		ullong64 encryptedtext = DESEncrypt(plaintext, bitset<64>(foundkey));
 		if (encryptedtext == ciphertext) break;
 		foundkey++;

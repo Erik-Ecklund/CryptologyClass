@@ -22,7 +22,7 @@ void KeyExpansion(ullong48 subkeys[16], bitset<64> key, bool printHex, bool prin
 		cd = Shift(cd, round);
 		ullong subkey = PermutedChoice2(cd);
 		if (printHex)
-			cout << "K" << dec << setfill(' ') << setw(2) << left << round + 1 << " = "
+			cout << "K" << dec << setfill(' ') << setw(2) << left << round + 1 << " = 0x"
 			<< hex << uppercase << setw(12) << right << setfill('0') << subkey << endl;
 		if (printBin)
 			cout << "K" << dec << setfill(' ') << setw(2) << left << round + 1 << " = "

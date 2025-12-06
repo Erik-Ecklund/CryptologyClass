@@ -21,5 +21,5 @@ h48 BinToHex(k48 subkey);
 void KeyExpansion(ullong48 subkeys[16], bitset<64> key, bool printHex = false, bool printBin = false);
 ullong56 PermutedChoice1(ullong64 key);
 ullong48 PermutedChoice2(ullong56 cd);
-ullong48 Shift(ullong48 cd, int round);
+ullong56 Shift(ullong56 cd, int round);
 ullong28 RotateLeft(ullong28 input, int shift);

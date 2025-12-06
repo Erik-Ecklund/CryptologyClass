@@ -16,6 +16,7 @@
 #include <iostream>
 #include <bitset>
 #include <string>
+#include <random>
 using namespace std;
 
 ullong64 paritybits = 0x0101010101010101ULL;
@@ -24,7 +25,7 @@ int main() {
 	ullong64 secretkey = 1ULL << 50;
 	// if secretkey includes parity bits, increment them.
 	while (secretkey & paritybits) secretkey += secretkey & paritybits;
-	cout << "0x" << hex << uppercase << setw(16) << right << setfill('0') << secretkey << endl;
+	cout << hex << uppercase << setw(16) << right << setfill('0') << secretkey << endl;
 	ullong64 plaintext = 0;
 	ullong64 vplaintext = 255;
 	ullong64 ciphertext = DESEncrypt(plaintext, bitset<64>(secretkey));

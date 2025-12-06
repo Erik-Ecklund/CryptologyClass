@@ -8,6 +8,7 @@
 #include <sstream>
 using namespace std;
 typedef string k64, k48, b56, b28, h64, h48;
+typedef uint64_t ullong, ullong64, ullong56, ullong48, ullong28;
 
 // string functions
 void KeyExpansion(k64 key, bool hex);
@@ -17,8 +18,8 @@ b28 Shift(b28 bin, int round);
 h48 BinToHex(k48 subkey);
 
 // binary functions
-void KeyExpansion(bitset<64>, bool);
-uint64_t PermutedChoice1(uint64_t key);
-uint64_t PermutedChoice2(uint64_t cd);
-uint64_t Shift(uint64_t cd, int round);
-uint64_t RotateLeft(uint64_t input, int shift);
+void KeyExpansion(ullong48[16], bitset<64>, bool = false, bool = false);
+ullong56 PermutedChoice1(ullong64 key);
+ullong48 PermutedChoice2(ullong56 cd);
+ullong48 Shift(ullong48 cd, int round);
+ullong28 RotateLeft(ullong28 input, int shift);

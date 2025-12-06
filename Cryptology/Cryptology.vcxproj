@@ -129,7 +129,6 @@
   <ItemGroup>
     <ClCompile Include="DESEncrypt.cpp" />
     <ClCompile Include="DESTables.h" />
-    <ClCompile Include="Source.cpp" />
     <ClCompile Include="KeyExpansion.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>

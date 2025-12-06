@@ -16,32 +16,40 @@
 #include <iostream>
 #include <bitset>
 #include <string>
+#include <chrono>
 using namespace std;
 
 ullong64 paritybits = 0x0101010101010101ULL;
 
 int main() {
+	ullong testkey = 0x0123456789ABCDEFULL;
 	ullong subkeys[16];
 	cout << "Hex Keys" << endl;
-	KeyExpansion(subkeys, bitset<64>(0), true);
+	KeyExpansion(subkeys, bitset<64>(testkey), true);
 	cout << "Binary Keys" << endl;
-	KeyExpansion(subkeys, bitset<64>(0), false, true);
+	KeyExpansion(subkeys, bitset<64>(testkey), false, true);
 
 	ullong64 secretkey = 1ULL << 20;
 	// if secretkey includes parity bits, increment them.
 	while (secretkey & paritybits) secretkey += secretkey & paritybits;
-	cout << "0x" << hex << uppercase << setw(16) << right << setfill('0') << secretkey << endl;
+	cout << "Secret key = 0x" << hex << uppercase << setw(16) << right << setfill('0') << secretkey << endl;
 	ullong64 plaintext = 0;
 	ullong64 ciphertext = DESEncrypt(plaintext, bitset<64>(secretkey));
 	ullong64 foundkey = 0;
+	ullong64 searchcount = 0;
+	auto start = chrono::high_resolution_clock::now();
 	while (true) {
 		// skip keys with parity bits set to reduce search space
 		while(foundkey & paritybits) foundkey += foundkey & paritybits;
 		ullong64 encryptedtext = DESEncrypt(plaintext, bitset<64>(foundkey));
+		searchcount++;
 		if (encryptedtext == ciphertext) break;
 		foundkey++;
 	}
-	cout << "Found Key: 0x" << hex << uppercase << setw(16) << right << setfill('0') << foundkey;
+	auto end = chrono::high_resolution_clock::now();
+	cout << "Found Key: 0x" << hex << uppercase << setw(16) << right << setfill('0') << foundkey << endl;
+	cout << "Time spent: " << chrono::duration<double>(end - start).count() << " seconds." << endl;
+	cout << "Keys checked: " << dec << searchcount << endl;
 	return 0;
 }
 

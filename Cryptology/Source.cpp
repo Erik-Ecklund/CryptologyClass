@@ -21,14 +21,18 @@ using namespace std;
 ullong64 paritybits = 0x0101010101010101ULL;
 
 int main() {
-	ullong64 secretkey = 1ULL << 50;
+	ullong subkeys[16];
+	cout << "Hex Keys" << endl;
+	KeyExpansion(subkeys, bitset<64>(0), true);
+	cout << "Binary Keys" << endl;
+	KeyExpansion(subkeys, bitset<64>(0), false, true);
+
+	ullong64 secretkey = 1ULL << 20;
 	// if secretkey includes parity bits, increment them.
 	while (secretkey & paritybits) secretkey += secretkey & paritybits;
 	cout << "0x" << hex << uppercase << setw(16) << right << setfill('0') << secretkey << endl;
 	ullong64 plaintext = 0;
-	ullong64 vplaintext = 255;
 	ullong64 ciphertext = DESEncrypt(plaintext, bitset<64>(secretkey));
-	ullong64 verification = DESEncrypt(vplaintext, bitset<64>(secretkey));
 	ullong64 foundkey = 0;
 	while (true) {
 		// skip keys with parity bits set to reduce search space

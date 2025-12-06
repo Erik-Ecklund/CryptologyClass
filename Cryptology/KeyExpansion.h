@@ -18,7 +18,7 @@ b28 Shift(b28 bin, int round);
 h48 BinToHex(k48 subkey);
 
 // binary functions
-void KeyExpansion(ullong48[16], bitset<64>, bool = false, bool = false);
+void KeyExpansion(ullong48 subkeys[16], bitset<64> key, bool printHex = false, bool printBin = false);
 ullong56 PermutedChoice1(ullong64 key);
 ullong48 PermutedChoice2(ullong56 cd);
 ullong48 Shift(ullong48 cd, int round);

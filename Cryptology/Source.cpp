@@ -22,6 +22,7 @@ using namespace std;
 ullong64 paritybits = 0x0101010101010101ULL;
 
 int main() {
+repeat:
 	ullong testkey = 0x0123456789ABCDEFULL;
 	ullong subkeys[16];
 	KeyExpansion(subkeys, bitset<64>(testkey), true, true);
@@ -47,6 +48,10 @@ int main() {
 	cout << "Found Key: 0x" << hex << uppercase << setw(16) << right << setfill('0') << foundkey << endl;
 	cout << "Time spent: " << chrono::duration<double>(end - start).count() << " seconds." << endl;
 	cout << "Keys checked: " << dec << searchcount << endl;
+	char repeatDemo;
+	cout << "Repeat Demo? (y/N)";
+	cin >> repeatDemo;
+	if (toupper(repeatDemo) == 'Y') goto repeat;
 	return 0;
 }
 
